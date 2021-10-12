@@ -1,0 +1,32 @@
+name: 'Hello World'
+description: 'Greet someone'
+inputs:
+  custom-bash:  # id of input
+    description: 'One liner?'
+    required: false
+    default: 'echo no-input-given'
+runs:
+  using: "composite"
+  steps:
+    - run: echo Hello Success
+      shell: bash
+      if: success()      
+      
+    - run: echo Hello Fail
+      shell: bash
+      if: failure()
+      
+    - run: exit 1
+      shell: bash
+      
+    - run: echo Hello Success
+      shell: bash
+      if: success()      
+      
+    - run: echo Hello Fail
+      shell: bash
+      if: failure()
+      
+    - run: echo Hello Always
+      shell: bash
+      if: always()
